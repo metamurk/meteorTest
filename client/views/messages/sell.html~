@@ -1,0 +1,6 @@
+<template name="sell">
+<!--main
+ {{>menu}}-->
+ {{>login}}
+
+</template>

@@ -1,0 +1,76 @@
+<template name="auctions">
+  <div id='auctions'>
+    <div class='page-header'>
+      <!--h1>
+        <small>{{#if catnotselected}}Books{{else}}{{category}}  Books{{/if}}</small>
+      </h1-->
+    </div>
+    <div id='mainContent'>
+      {{#each auctionlist}}
+        {{>auction1}}
+      {{else}}
+        {{#if catnotselected}}
+          <div class='page-header'><h1><small>Select a category.</small></h1></div>
+        {{else}}
+          <div class='page-header'><h1><small>No books in this category.</small></h1></div>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+
+<template name='auction'>
+  <div class='item'>
+    <ul id='{{_id}}' class='nav nav-list text-left'>
+      <div class='thumbnail content'>
+    {{#with auctionPicture}}
+        <img src="{{this.url}}" />
+    {{/with}}
+        <li><strong>{{title}}</strong></li>
+        <li>{{format}}</li>
+      </div> 
+    </ul>
+  </div>
+</template>
+
+<template name='auction2'>
+  <div class='item'>
+    <ul id='{{_id}}' class='nav nav-list text-left'>
+      {{#with auctionPicture}}
+      <li class='thumbnail'> <img src='{{this.url}}'/> </li>
+       {{/with}}
+      <div class='thumbnail content'>
+        <li><strong>{{title}}</strong></li>
+        <!--li>{{format}}</li-->
+      </div> 
+    </ul>
+  </div>
+</template>
+
+<template name='auction1'>
+  <div class='item'>
+    <ul id='{{_id}}' class='nav nav-list text-left'>
+
+      {{#with auctionPicture}}
+         <li class='thumbnail'> <img src='{{this.url}}'/> </li>
+       {{/with}}
+
+      <div class='thumbnail content'>
+        {{#if currentUser}}
+    <div class='like-bar'>
+      <a href='#' class='like'>
+        <i class='fa fa-heart-o'></i>
+      </a>
+        <span class='label label-danger'>{{numLikes}}</span>
+        <span class='badge badge-default'>{{likesThis}}</span>
+    </div>
+  {{/if}}
+        <li><strong>{{title}}</strong></li>
+        <li>{{format}}</li>
+      </div> 
+    </ul>
+  </div>
+</template>
+
+

@@ -1,0 +1,79 @@
+
+<template name="createAuction">
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+        {{> sellForm}}
+       </div>
+       <div class="col-sm-3">
+      </div>
+  </div>
+</div>
+ 
+ 
+</template>
+
+<template name="sellForm">
+
+  {{#autoForm collection="Auctions" id="auctionInsertForm" type="insert"}}
+
+
+    <fieldset>
+      {{> afQuickField name='title'}}
+      {{> afQuickField name='subtitle'}}
+      {{> afQuickField name="category"}}
+      {{> afQuickField name="picture"}}
+    </fieldset>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Add Auction</button>
+    <button type="reset" class="btn btn-default">Reset Form</button>
+  </div>
+
+  {{/autoForm}}
+</template>
+
+<template name="images">
+  <div id="images">
+    {{#each images}}
+      {{>photoTile}}
+    {{/each}}
+  </div>
+</template>
+
+
+<template name="photoTile">
+  <div class="photo_tile">
+    <div>
+      {{#if url store="thumbnail"}}
+        {{! if we have a url to the thumbnail store we will display the image}}
+        <img src="{{url store="thumbnail"}}" >
+      {{else}}
+        {{! Since we are do not have a url lets show a placeholder image}}
+        <img src="/uploading.png">
+
+        {{#unless isUploaded}}
+          {{! If we haven't fully uploaded the file yet show the progress}}
+          <p class="uploadProgress">uploading..{{uploadProgress}}%</p>
+        {{else}}
+          {{! 
+            Since we have a fully uploaded file but the store hasn't finished
+            processing yet, we will display a processing message.
+          }}
+          <p class="uploadProgress">processing..</p>
+        {{/unless}}
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+
+
+
+
+
+
+

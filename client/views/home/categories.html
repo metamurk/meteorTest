@@ -1,0 +1,11 @@
+<template name="categories">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    {{#each categories}}
+  <!--button id="categories" type="button" href="/{{name}}" class="btn btn-secondary">{{name}}</button-->
+  <a id="lala" href="/{{name}}" class="btn btn-secondary" role="button">{{name}}</a>
+  	<!--li id="categories"><a class="btn btn-default" href="/{{name}}">{{name}}</a></li-->
+    {{/each}}
+  </div>
+</template>
+
+

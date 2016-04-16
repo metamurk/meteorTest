@@ -1,0 +1,37 @@
+
+
+Router.route( 'home', {
+  path: '/',
+  template: 'home',
+  onBeforeAction: function(){
+    Session.set( 'currentRoute', 'home' );
+    this.next();
+  }
+});
+
+Router.route( 'Suscribe', {
+  path: '/Suscribe',
+  template: 'suscribe',
+  onBeforeAction: function(){
+    Session.set( 'currentRoute', 'suscribe' );
+    this.next();
+  }
+});
+
+Router.route( 'Login', {
+  path: '/Login',
+  template: 'login',
+  onBeforeAction: function(){
+    Session.set( 'currentRoute', 'login' );
+    this.next();
+  }
+});
+
+//Router.configure({
+//  layoutTemplate:'home',
+//  yieldTemplates:{
+  //each yield going to different templates
+//  'books':{to:'auctions'},
+//  'categories':{to:'categories'}
+//  }
+//});

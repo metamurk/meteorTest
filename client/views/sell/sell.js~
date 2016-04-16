@@ -1,0 +1,57 @@
+Template.sellForm.helpers({
+  categories: function () {
+    return Categories.find();
+  }
+});
+
+Template.sellForm.events({
+  'change #fileInput1': function (event) {
+    console.log("input");
+    FS.Utility.eachFile(event, function(file) {
+      var id =Images.insert(file);
+      console.log('ID: '+id);
+    });
+    $("form")[0].reset();
+  }
+});
+
+Template.auctionImageView.helpers({
+  images: function () {
+    return Images.find(); // Where Images is an FS.Collection instance
+  }
+});
+
+Template.dropzone.events({
+  'dropped #dropzone': function(e) {
+    console.log('dropped a file');
+  }
+});
+
+ Template.fileList.helpers({
+    theFiles: function () {
+      return YourFileCollection.find();
+    }
+  });
+
+  Template.fileList.events({
+    'click #deleteFileButton ': function (event) {
+      console.log("deleteFile button ", this);
+      YourFileCollection.remove({_id: this._id});
+    },
+    'change .your-upload-class': function (event, template) {
+      console.log("uploading...")
+      FS.Utility.eachFile(event, function (file) {
+        console.log("each file...");
+        var yourFile = new FS.File(file);
+        YourFileCollection.insert(yourFile, function (err, fileObj) {
+          console.log("callback for the insert, err: ", err);
+          if (!err) {
+            console.log("inserted without error");
+          }
+          else {
+            console.log("there was an error", err);
+          }
+        });
+      });
+    }
+  });

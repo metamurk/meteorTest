@@ -1,0 +1,21 @@
+Session.setDefault('category', null);
+
+ $('.selectpicker').selectpicker();
+
+ $('body').scrollspy({
+    target: '.bs-docs-sidebar',
+    offset: 40
+});
+
+Deps.autorun(function(){
+  Meteor.subscribe('books');
+})
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+Customers = new Meteor.Collection( 'customers' );
+Orders = new Meteor.Collection( 'orders' );
+Pizza = new Meteor.Collection( 'pizza' );

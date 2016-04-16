@@ -1,0 +1,45 @@
+<template name="1home">
+
+{{> auctionWall}}
+
+</template>
+
+
+<template name="home">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        {{> categories}}
+      </div>
+      <div class="col-xs-10 col-xs-offset-1 text-center">
+        {{> auctions}}
+      </div>
+    </div>
+    
+  </div>
+</template>
+
+<template name="auctionWall">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="text-center">
+        {{> showCategoryButtons}}
+      </div>
+    </div>  
+  </div>
+</template>
+
+<template name="showCategoryButtons">
+  <!--ul>
+  {{#each categories}}
+  <li id="categories"><a class="btn btn-default" href="/{{name}}">{{name}}</a></li>
+  {{/each}}
+  </ul-->
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    {{#each categories}}
+  <button type="button" class="btn btn-secondary">{{name}}</button>
+    {{/each}}
+</div>
+
+</template>
